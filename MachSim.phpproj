@@ -1,0 +1,11 @@
+<Project Sdk="Devsense.Php.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>8bc89882-26bc-4623-be8b-f518ed5ea4a2</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnvName>PHPDev</EnvName>
+    <RuntimeVersion>7.4</RuntimeVersion>
+    <PublishBeforeDebugProfile>MachSim</PublishBeforeDebugProfile>
+    <CustomServerUrl>https://machsim.cmmsportal.com</CustomServerUrl>
+  </PropertyGroup>
+</Project>
