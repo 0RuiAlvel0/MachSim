@@ -1,9 +1,10 @@
 # MachSim
 General machine operation simulator
 
-##Current release status
+## Current release status
 Import the mach_dbs.sql script to a mySQL db server. This will created 2 databases, only is for machine definitions (the script comes with one machine defined) and another database for data (it comes with a couple of lines as example). Make the Worker.php run with cron. For my tests, I was running it every 5 minutes - don't want to have an hyper-huge database on the tests phase. You can always run the script manually from a browser adn then reloading it. All this assumes that you have apache and php and mysql on your machine and know how to set a folder served from apache. Create a file called "Config.php" - note the capital C - with the following contents (fill with your information):
 
+```php
 <?php
 //MachSim configuration file. Do not sync with git - that means that you should add it to the .gitignore file!
 
@@ -27,8 +28,9 @@ $data_db_pass = "your_data";
 $location_id = 1;
 
 ?>
+```
  
-##Description
+## Description
 MachSim is a php app that simulates the operation of a configurable amount of general virtual machines and allows for the introduction of operational disturbances. The simulation is by variation of the following parameters:
 
 1. Current (float)
@@ -50,6 +52,6 @@ Faults are then manually triggered or automatically triggered (at a given set fr
 1. One or more of the parameters was detected out of normal range values.
 2. The rules and parameter inter-relations do not hold true.
 
-##Technical requirements
+## Technical requirements
 
 To run MachSim you will need a local or remote environment with Apache, PHP7.4 and MySQL 8 (only tested with these versions, may work with others).
