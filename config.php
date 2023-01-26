@@ -6,7 +6,7 @@
 $MAX_NUM_PARAMETERS = 5;
 
 //MachSim database related information. This is not the database where data is to be sent. That is further down below.
-$config_db_name = "zodiak_mach";
+$config_db_name = "zodiak_mach"; 
 $config_db_user = "zodiak_mach";
 $config_db_server = "localhost";
 $config_db_pass = "deerDsdfkj_98s";
