@@ -34,7 +34,7 @@ function get_array_of_machine_ids(){
         //We have at least 1 machine on the database, create array of machine ids to return
         //from this function
         while($row = $result->fetch_assoc()) {
-            $output["id"] = $row["id"];
+            $output[$row["id"]] = $row["id"];
         }
         return $output;
     }
@@ -93,6 +93,21 @@ function get_machine_data($machine_id){
         return false;
 }
 
+function save_machine_value($machine_id, $is_running, $has_fault_trigger){
+
+    $conn = connect_to_config_db();
+
+    $sql = "UPDATE machine_info SET is_running = '$is_running', has_fault_trigger = '$has_fault_trigger' WHERE id = '$machine_id'";
+
+    if ($conn->query($sql) === TRUE) {
+        //echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+
 //End "Items related to the configuration database
 
 //Start items related to the database where generated data is to be stored
@@ -129,31 +144,32 @@ function get_last_parameter_value($location_id, $p_id){
 
         $counter = 0;
         while($row = $result->fetch_assoc()) {
-            $output[$counter] = $row["value"];
-            echo "YO: ". $row["value"]." ";
+            $output[$counter] = $row["value"]."-%%%-".$row["fault_message"];
             $counter++;
         }
         echo "<br />";
 
         //of we have at least x values, we can guess a trend (just subtract the first from the last. If negative we're up if positive, we're down):
-        if($counter >= 2){
-            if(reset($output) - end($output) <= 0)
-                $output['trend'] = "up";
-            else
-                $output['trend'] = "down";
-        }
+        //if($counter >= 2){
+            //if(reset($output) - end($output) <= 0)
+                //$output['trend'] = "up";
+            //else
+                //$output['trend'] = "down";
+        //}
+
         return $output;
     }
     else
         return false;
 }
 
-function save_parameter_value($location_id, $timestamp, $p_id, $value){
+function save_parameter_value($location_id, $timestamp, $p_id, $value, $p_normal_min, $p_normal_max, $p_setpoint, $fault_message, $is_running){
+
     $conn = connect_to_data_db();
 
-    $sql = "INSERT INTO sensor_data (time, location_id, sensor_id, value) VALUES ('$timestamp', '$location_id', '$p_id', '$value')";
+    //echo "Will add ts: $timestamp, l_id: $location_id, s_id: $p_id, val: $value, nmin: $p_normal_min, nmax: $p_normal_max, setpoint: $p_setpoint, fault: $fault_message, is_running: $is_running";
 
-    //$result = mysqli_query($conn, $sql);
+    $sql = "INSERT INTO sensor_data (time, location_id, sensor_id, value, normal_min, normal_max, setpoint, fault_message, is_running) VALUES ('$timestamp', '$location_id', '$p_id', '$value', '$p_normal_min', '$p_normal_max', '$p_setpoint', '$fault_message', '$is_running')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";

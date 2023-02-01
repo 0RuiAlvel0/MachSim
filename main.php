@@ -37,6 +37,10 @@
     </nav>
 
     <div class="container">
+        <a href="Worker.php" target="_blank">Manual trigger</a>
+    </div>
+
+    <div class="container">
         <table id="current_machines_table" class="table">
             <thead>
                 <tr>
@@ -51,58 +55,7 @@
         </table>
     </div>
 
-    <div class="container">
-        <h3>Add Machine</h3>
-        <form>
-            <?php for($counter = 1; $counter <= $MAX_NUM_PARAMETERS; $counter++): ?>
-            <div class="form-row align-items-center">
-                <div class="col-auto">
-                    P<?php echo $counter."/".$MAX_NUM_PARAMETERS; ?>
-                </div>
-                <div class="col-auto">
-                    <label for="inlineFormInput">Name</label>
-                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="e.g. Voltage" />
-                </div>
-                <div class="col-auto">
-                    <label for="inlineFormInputGroup">P<?php echo $counter; ?> normal range</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="xx.x-yy.y" />
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <label for="inlineFormInputGroup">
-                        P<?php echo $counter; ?> abnormal max-min
-                    </label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="xx.x-yy.y" />
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <label for="inlineFormInputGroup">
-                        P<?php echo $counter; ?> Related to
-                    </label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Px" />
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <div class="input-group mb-2">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>None</option>
-                      <option>Up</option>
-                      <option>Down</option>
-                    </select>
-                    </div>
-                </div>
-                <div class="col-auto"></div>
-            </div>
-            <?php endfor; ?>
-            <div class="col text-center">
-                <button type="submit" class="btn btn-primary mb-2">Add new machine</button>
-            </div>
-        </form>
-    </div>
+   
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

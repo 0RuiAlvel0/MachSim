@@ -29,6 +29,8 @@ $location_id = 1;
 
 ?>
 ```
+
+(1 Feb, 2023) The commit for previous database is not current anymore, please contact me in case you would like to test this and you need the database schema.
  
 ## Description
 MachSim is a php app that simulates the operation of a configurable amount of general virtual machines and allows for the introduction of operational disturbances. The simulation is by variation of the following parameters:

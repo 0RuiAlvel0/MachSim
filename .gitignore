@@ -4,6 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 Config.php
+MachSim.phpproj
+MachSim.phpproj.user
+MachSim.sln
 
 # User-specific files
 *.rsuser
